@@ -175,6 +175,11 @@ const previewPosts = [...notePosts, ...manualPosts]
   .nowrap {
     white-space: nowrap;
   }
+  @media (max-width: 640px) {
+    .nowrap { white-space: normal; }
+    .hero { padding: 6rem 1.25rem 5rem; }
+    .hero h1 { font-size: 1.6rem; }
+  }
   .hero-sub {
     font-size: 1.25rem;
     line-height: 1.9;
