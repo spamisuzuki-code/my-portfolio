@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { fetchNotePosts, type NotePost } from '../lib/note-rss';
+
+const manualPosts: NotePost[] = [
+  {
+    title: '自分の人生は自分のもの！主体的に生きよ',
+    date: '2024年2月12日',
+    rawDate: new Date('2024-02-12'),
+    category: 'その他',
+    excerpt: '「理想の自分」と他者からの見られ方のギャップをどう生きるか。社会学者ゴッフマンの理論をもとに、主体的に生きることの意味を探ります。',
+    link: 'https://www.communis.jp/blog/archives/2221',
+    image: 'https://www.communis.jp/blog/wp-content/uploads/2024/02/AdobeStock_530663184-scaled.jpeg',
+  },
+  {
+    title: 'AI社会の中で、今ライターがすべきこと',
+    date: '2023年12月20日',
+    rawDate: new Date('2023-12-20'),
+    category: '評論',
+    excerpt: '生成AIが発達する社会で、ライターが求められるのは「主体的に行動し、主体的に考えて生きる」こと。AIと人間の言語習得の違いから、身体を通じた経験の重要性を解説します。',
+    link: 'https://www.communis.jp/blog/archives/2064',
+    image: 'https://www.communis.jp/blog/wp-content/uploads/2023/12/AdobeStock_672535898-scaled.jpeg',
+  },
+];
+
+const notePosts = await fetchNotePosts('ami_su');
+const posts = [...notePosts, ...manualPosts].sort((a, b) => b.rawDate.getTime() - a.rawDate.getTime());
+---
+
+<BaseLayout title="Blog" description="鈴木愛美のブログ｜スピーチ・映像・日々の活動">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <p class="page-eyebrow">Blog</p>
+      <h1>ブログ</h1>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    {posts.length === 0 ? (
+      <p class="no-posts">記事を取得できませんでした。</p>
+    ) : (
+      <div class="post-list">
+        {posts.map(post => (
+          <a
+            href={post.link}
+            class="post-card"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {post.image && (
+              <div class="post-thumb">
+                <img src={post.image} alt={post.title} />
+              </div>
+            )}
+            <div class="post-body">
+              <div class="post-meta">
+                <span class="post-category">{post.category ?? 'note'}</span>
+                <span class="post-date">{post.date}</span>
+                <span class="post-external">↗</span>
+              </div>
+              <h2 class="post-title">{post.title}</h2>
+              {post.excerpt && <p class="post-excerpt">{post.excerpt}</p>}
+              <span class="post-readmore">続きを読む →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+    padding: 3.5rem 1.5rem 3rem;
+    color: #ffffff;
+  }
+  .page-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .page-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .page-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  .page-wrapper {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem;
+  }
+
+  .post-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .post-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    background: #ffffff;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .post-card:hover {
+    box-shadow: 0 6px 24px rgba(29,53,87,0.1);
+    transform: translateY(-3px);
+  }
+  .post-thumb {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+  .post-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .post-card:hover .post-thumb img {
+    transform: scale(1.04);
+  }
+  .post-body {
+    padding: 1.5rem;
+    border-top: 3px solid var(--navy);
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .post-category {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.7rem;
+    background: var(--navy);
+    color: #ffffff;
+    border-radius: 2px;
+    letter-spacing: 0.06em;
+  }
+  .post-date {
+    font-size: 0.82rem;
+    color: var(--text-light);
+  }
+  .post-external {
+    font-size: 0.72rem;
+    color: var(--blue-accent);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .post-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.65rem;
+    line-height: 1.5;
+  }
+  .post-excerpt {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+  .post-readmore {
+    font-size: 0.85rem;
+    color: var(--blue-accent);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .no-posts {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    padding: 2rem 0;
+  }
+</style>

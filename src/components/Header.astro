@@ -1,0 +1,92 @@
+---
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/works', label: 'Works' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">
+      <span class="logo-en">SPEECH WRITER</span>
+      <span class="logo-ja">鈴木愛美</span>
+    </a>
+    <nav class="site-nav">
+      <ul>
+        {navLinks.map(link => (
+          <li>
+            <a
+              href={link.href}
+              class:list={['nav-link', { active: currentPath === link.href }]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    z-index: 100;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.08);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .site-logo {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .logo-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #8a9aaa;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .logo-ja {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1d3557;
+    letter-spacing: 0.12em;
+  }
+  .site-nav ul {
+    display: flex;
+    gap: 2.25rem;
+    list-style: none;
+  }
+  .nav-link {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--navy);
+    font-weight: 700;
+  }
+</style>

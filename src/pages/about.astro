@@ -1,0 +1,317 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About" description="スピーチライター・映像クリエイター 鈴木愛美のプロフィール">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <p class="page-eyebrow">About</p>
+      <h1>プロフィール</h1>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+
+    <div class="about-grid">
+      <div class="about-photo">
+        <img src="/profile.png" alt="鈴木愛美" class="profile-img" />
+      </div>
+      <div class="about-content">
+        <h2 class="about-name">鈴木愛美<span class="name-ruby">（すずきあみ）</span></h2>
+        <p class="about-role">スピーチライター / 映像クリエイター</p>
+
+        <table class="basic-info">
+          <tr>
+            <th>生年月日</th>
+            <td>1990年2月28日</td>
+          </tr>
+          <tr>
+            <th>出身</th>
+            <td>神奈川</td>
+          </tr>
+          <tr>
+            <th>血液型</th>
+            <td>A型</td>
+          </tr>
+          <tr>
+            <th>趣味</th>
+            <td>社交ダンス</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <section class="career-section">
+      <p class="section-eyebrow">Career</p>
+      <h2 class="section-title">経歴</h2>
+      <ol class="timeline">
+        <li class="timeline-item">
+          <span class="timeline-year">2012年3月</span>
+          <div class="timeline-body">
+            東洋英和女学院大学 人間科学部 卒業
+          </div>
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-year">2017年3月</span>
+          <div class="timeline-body">
+            帝京大学 医療技術学部 卒業<br />
+            <span class="timeline-note">臨床検査技師国家資格 取得</span>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-year">2018年4月<br />― 2024年3月</span>
+          <div class="timeline-body">
+            帝京大学附属病院にて臨床検査技師として勤務
+          </div>
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-year">2021年8月</span>
+          <div class="timeline-body">
+            蔭山洋介のもとでスピーチライティングを学び始める<br />
+            <a href="https://www.communis.jp/sws" target="_blank" rel="noopener noreferrer" class="timeline-link">SWS（スピーチライティングスクール）</a>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-year">2024年4月〜</span>
+          <div class="timeline-body">
+            話し方講師として活動開始<br />
+            <a href="https://www.street-academy.com/myclass/58350?conversion_name=direct_message&tracking_code=52133dc468a08ecc5db48e2faab26ebb" target="_blank" rel="noopener noreferrer" class="timeline-link">あがり症だけのスピーチ練習会「ヒモンスピーチ」</a>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="skills-section">
+      <p class="section-eyebrow">Skills</p>
+      <h2 class="section-title">スキル・ツール</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>映像制作</h3>
+          <ul>
+            <li>Adobe Premiere Pro</li>
+            <li>Adobe After Effects</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>執筆・ライティング</h3>
+          <ul>
+            <li>スピーチ原稿</li>
+            <li>祝辞・謝辞</li>
+            <li>プレゼン構成</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  /* ── ページヘッダー ── */
+  .page-header {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+    padding: 3.5rem 1.5rem 3rem;
+    color: var(--white);
+  }
+  .page-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .page-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.22em;
+    color: #c9a84c;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .page-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── コンテンツ ── */
+  .page-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 2rem;
+  }
+
+  /* ── 写真 + 基本情報 ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 3.5rem;
+    align-items: start;
+    margin-bottom: 4.5rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  @media (max-width: 700px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+  .profile-img {
+    width: 100%;
+    border-radius: 6px;
+    display: block;
+    object-fit: cover;
+    box-shadow: 0 4px 20px rgba(29,53,87,0.15);
+  }
+  .about-name {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+  .name-ruby {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-light);
+    margin-left: 0.5rem;
+  }
+  .about-role {
+    color: var(--blue-accent);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    margin-bottom: 1.75rem;
+  }
+  .basic-info {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.93rem;
+  }
+  .basic-info tr {
+    border-bottom: 1px solid var(--border);
+  }
+  .basic-info th {
+    text-align: left;
+    padding: 0.65rem 1rem 0.65rem 0;
+    color: var(--text-light);
+    font-weight: 500;
+    white-space: nowrap;
+    width: 6rem;
+  }
+  .basic-info td {
+    padding: 0.65rem 0;
+    color: var(--text-dark);
+  }
+
+  /* ── セクション共通 ── */
+  .section-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.22em;
+    color: var(--blue-accent);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  .section-title {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 2rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--navy);
+  }
+
+  /* ── 経歴 ── */
+  .career-section {
+    margin-bottom: 4.5rem;
+  }
+  .timeline {
+    list-style: none;
+    position: relative;
+    padding-left: 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 9.5rem;
+    top: 0.7rem;
+    bottom: 0.7rem;
+    width: 1px;
+    background: var(--border);
+  }
+  @media (max-width: 600px) {
+    .timeline::before { left: 0; }
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 9.5rem 1fr;
+    gap: 1.75rem;
+    align-items: start;
+    padding: 1.1rem 0;
+    position: relative;
+  }
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    left: calc(9.5rem - 5px);
+    top: 1.45rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--navy);
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 1px var(--navy);
+  }
+  @media (max-width: 600px) {
+    .timeline-item { grid-template-columns: 1fr; padding-left: 1.5rem; }
+    .timeline-item::after { left: -5px; }
+  }
+  .timeline-year {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    text-align: right;
+    padding-right: 1.75rem;
+    padding-top: 0.1rem;
+    line-height: 1.6;
+  }
+  .timeline-body {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--text-dark);
+  }
+  .timeline-note {
+    font-size: 0.83rem;
+    color: var(--blue-accent);
+  }
+  .timeline-link {
+    font-size: 0.83rem;
+    color: var(--blue-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.2s;
+  }
+  .timeline-link:hover {
+    opacity: 0.7;
+  }
+
+  /* ── スキル ── */
+  .skills-section { margin-bottom: 2rem; }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+  .skill-group h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+  .skill-group ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .skill-group li {
+    font-size: 0.9rem;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-mid);
+  }
+</style>

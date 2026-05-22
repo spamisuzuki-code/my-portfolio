@@ -1,17 +1,388 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { fetchNotePosts, type NotePost } from '../lib/note-rss';
 
+const manualPosts: NotePost[] = [
+  {
+    title: '自分の人生は自分のもの！主体的に生きよ',
+    date: '2024年2月12日',
+    rawDate: new Date('2024-02-12'),
+    category: 'その他',
+    excerpt: '「理想の自分」と他者からの見られ方のギャップをどう生きるか。社会学者ゴッフマンの理論をもとに、主体的に生きることの意味を探ります。',
+    link: 'https://www.communis.jp/blog/archives/2221',
+    image: 'https://www.communis.jp/blog/wp-content/uploads/2024/02/AdobeStock_530663184-scaled.jpeg',
+  },
+  {
+    title: 'AI社会の中で、今ライターがすべきこと',
+    date: '2023年12月20日',
+    rawDate: new Date('2023-12-20'),
+    category: '評論',
+    excerpt: '生成AIが発達する社会で、ライターが求められるのは「主体的に行動し、主体的に考えて生きる」こと。AIと人間の言語習得の違いから、身体を通じた経験の重要性を解説します。',
+    link: 'https://www.communis.jp/blog/archives/2064',
+    image: 'https://www.communis.jp/blog/wp-content/uploads/2023/12/AdobeStock_672535898-scaled.jpeg',
+  },
+];
+
+const notePosts = await fetchNotePosts('ami_su');
+const previewPosts = [...notePosts, ...manualPosts]
+  .sort((a, b) => b.rawDate.getTime() - a.rawDate.getTime())
+  .slice(0, 2);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Home" description="スピーチライター・映像クリエイター 鈴木愛美のポートフォリオサイト">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Speech Writer &amp; Video Creator</p>
+      <h1><span class="nowrap">心を動かすスピーチと、記憶に残る映像。</span><br /><span class="nowrap">あなたの想いを社会に届ける。</span></h1>
+      <p class="hero-sub">
+        あなたの「想い」を言語化し、「伝わる」形に整えます。
+      </p>
+      <div class="hero-cta">
+        <a href="/works" class="btn-primary">作品を見る</a>
+        <a href="/about" class="btn-secondary">プロフィール</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="services-inner">
+      <p class="section-eyebrow">Services</p>
+      <h2>できること</h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-img-wrap">
+            <img
+              src="/service-speech.jpg"
+              alt="スピーチライター"
+            />
+          </div>
+          <div class="service-body">
+            <h3>スピーチライティング</h3>
+            <p>祝辞・講演原稿・プレゼン資料など、あなたの言葉で想いを伝える原稿を執筆します。</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img-wrap">
+            <img
+              src="/service-speaking.jpg"
+              alt="話し方講師"
+            />
+          </div>
+          <div class="service-body">
+            <h3>スピーチトレーニング</h3>
+            <p>基本的な発声からジェスチャーまで、原稿に合わせた話し方のトレーニングを行います。</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img-wrap">
+            <img
+              src="/service-video.jpg"
+              alt="映像制作"
+            />
+          </div>
+          <div class="service-body">
+            <h3>映像制作</h3>
+            <p>企業VP・イベント映像・短編作品など、企画から編集まで一貫して対応します。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blog-preview">
+    <div class="blog-preview-inner">
+      <div class="blog-preview-header">
+        <div>
+          <p class="section-eyebrow">Blog</p>
+          <h2>最新記事</h2>
+        </div>
+        <a href="/blog" class="blog-more">すべて見る →</a>
+      </div>
+      <div class="blog-preview-list">
+        {previewPosts.map(post => (
+          <a
+            href={post.link}
+            class="blog-preview-card"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {post.image && (
+              <div class="blog-preview-thumb">
+                <img src={post.image} alt={post.title} />
+              </div>
+            )}
+            <div class="blog-preview-body">
+              <span class="blog-preview-category">{post.category ?? 'note'}</span>
+              <p class="blog-preview-date">{post.date}</p>
+              <h3>{post.title}</h3>
+              {post.excerpt && <p class="blog-preview-excerpt">{post.excerpt}</p>}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    color: #ffffff;
+    padding: 9rem 1.5rem 8rem;
+    overflow: hidden;
+    background-image: url('/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(10, 18, 30, 0.92) 0%,
+      rgba(14, 25, 40, 0.85) 50%,
+      rgba(10, 18, 30, 0.70) 100%
+    );
+    z-index: 0;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .hero-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.22em;
+    color: #ffffff;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+  }
+  .nowrap {
+    white-space: nowrap;
+  }
+  .hero-sub {
+    font-size: 1.25rem;
+    line-height: 1.9;
+    color: #ffffff;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-block;
+    padding: 0.85rem 2.25rem;
+    background: transparent;
+    border: 1.5px solid #ffffff;
+    color: #ffffff;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-secondary {
+    display: inline-block;
+    padding: 0.85rem 2.25rem;
+    border: 1.5px solid rgba(255,255,255,0.8);
+    color: #ffffff;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-primary:hover {
+    background: rgba(255,255,255,0.25);
+  }
+  .btn-secondary:hover {
+    border-color: var(--white);
+    background: rgba(255,255,255,0.1);
+  }
+
+
+  /* ── Services ── */
+  .services {
+    padding: 5rem 1.5rem;
+    background: var(--bg-light);
+  }
+  .services-inner {
+    max-width: 1050px;
+    margin: 0 auto;
+  }
+  .section-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.22em;
+    color: var(--blue-accent);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .services h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2.75rem;
+    color: var(--navy);
+  }
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.75rem;
+  }
+  .service-card {
+    background: var(--white);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(29,53,87,0.07);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .service-card:hover {
+    box-shadow: 0 8px 28px rgba(29,53,87,0.14);
+    transform: translateY(-4px);
+  }
+  .service-img-wrap {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+  }
+  .service-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover .service-img-wrap img {
+    transform: scale(1.05);
+  }
+  .service-body {
+    padding: 1.6rem 1.75rem 2rem;
+    border-top: 3px solid var(--navy);
+  }
+  .service-body h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.65rem;
+  }
+  .service-body p {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.85;
+  }
+  /* ── Blog Preview ── */
+  .blog-preview {
+    padding: 5rem 1.5rem;
+    background: #ffffff;
+  }
+  .blog-preview-inner {
+    max-width: 1050px;
+    margin: 0 auto;
+  }
+  .blog-preview-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .blog-preview-header h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .blog-more {
+    font-size: 0.88rem;
+    color: var(--blue-accent);
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: opacity 0.2s;
+  }
+  .blog-more:hover { opacity: 0.7; }
+  .blog-preview-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .blog-preview-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    border-top: 3px solid var(--navy);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .blog-preview-card:hover {
+    box-shadow: 0 6px 24px rgba(29,53,87,0.1);
+    transform: translateY(-3px);
+  }
+  .blog-preview-thumb {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+  }
+  .blog-preview-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .blog-preview-card:hover .blog-preview-thumb img {
+    transform: scale(1.05);
+  }
+  .blog-preview-body {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+  .blog-preview-category {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.2rem 0.7rem;
+    background: var(--navy);
+    color: #ffffff;
+    border-radius: 2px;
+    letter-spacing: 0.06em;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+  .blog-preview-date {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-bottom: 0.6rem;
+  }
+  .blog-preview-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+  .blog-preview-excerpt {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+</style>
