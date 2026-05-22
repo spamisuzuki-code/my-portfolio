@@ -34,7 +34,7 @@ const previewPosts = [...notePosts, ...manualPosts]
   <section class="hero">
     <div class="hero-inner">
       <p class="hero-eyebrow">Speech Writer &amp; Video Creator</p>
-      <h1><span class="nowrap">心を動かすスピーチと、記憶に残る映像。</span><br /><span class="nowrap">あなたの想いを</span><br /><span class="nowrap">社会に届ける。</span></h1>
+      <h1><span class="nowrap">心を動かすスピーチと、記憶に残る映像。</span><br /><span class="nowrap">あなたの想いを</span><br class="sp-br" /><span class="nowrap">社会に届ける。</span></h1>
       <p class="hero-sub">
         あなたの「想い」を言語化し、「伝わる」形に整えます。
       </p>
@@ -175,7 +175,11 @@ const previewPosts = [...notePosts, ...manualPosts]
   .nowrap {
     white-space: nowrap;
   }
+  .sp-br {
+    display: none;
+  }
   @media (max-width: 640px) {
+    .sp-br { display: block; }
     .nowrap { white-space: normal; }
     .hero {
       padding: 6rem 1.25rem 5rem;
