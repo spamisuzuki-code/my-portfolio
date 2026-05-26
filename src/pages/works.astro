@@ -1,16 +1,154 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const videoWorks = [
+  {
+    client: '大手教育グループ',
+    title: '社内報動画制作',
+    desc: '全社向けの社内報動画を制作。取材・インタビューから編集まで担当しました。',
+    tags: ['取材・インタビュー', '動画編集'],
+  },
+  {
+    client: '大手教育グループ',
+    title: 'パートナー総会 プレゼンテーション動画',
+    desc: '数百名規模のパートナー総会で使用されるプレゼン動画を制作。アニメーション制作と素材選定を担当しました。',
+    tags: ['アニメーション', '素材選定'],
+  },
+  {
+    client: 'ITソリューション企業',
+    title: '幕張メッセ式典 背景アニメーション・トランジション',
+    desc: '幕張メッセで開催された式典のプレゼンテーション用背景アニメーションとトランジションを制作しました。',
+    tags: ['アニメーション', 'モーショングラフィックス'],
+  },
+  {
+    client: '不動産関連企業',
+    title: 'サイネージ広告映像制作',
+    desc: 'デジタルサイネージ向けの広告映像を制作しました。',
+    tags: ['映像制作', '広告'],
+  },
+  {
+    client: '金融系企業',
+    title: '社内報動画制作',
+    desc: '社内コミュニケーションの活性化を目的とした社内報動画を制作。取材・インタビューから編集まで担当しました。',
+    tags: ['取材・インタビュー', '動画編集'],
+  },
+  {
+    client: 'キャリア支援企業',
+    title: '利用者インタビュー動画',
+    desc: 'サービス利用者へのインタビュー取材と動画編集を担当しました。',
+    tags: ['取材・インタビュー', '動画編集'],
+  },
+];
+
+const writingWorks = [
+  {
+    client: '不動産関連企業',
+    title: '社史執筆',
+    desc: '創業から現在に至るまでの歴史を取材・執筆しました。',
+    tags: ['インタビュー', '執筆'],
+  },
+  {
+    client: '不動産関連企業',
+    title: '採用向け社員インタビュー記事・漫画制作・漫画動画化',
+    desc: '社員へのインタビュー取材をもとに記事を執筆。漫画化・動画化の企画・制作も担当しました。',
+    tags: ['取材・インタビュー', '記事執筆', '漫画制作', '採用広告'],
+  },
+  {
+    client: '化粧品会社',
+    title: 'エグゼクティブスピーチ原稿執筆',
+    desc: 'チーム向けリーダースピーチの原稿を執筆しました。',
+    tags: ['スピーチライティング', '原稿執筆'],
+  },
+  {
+    client: '飲食店オーナー（個人）',
+    title: '学生向けスピーチ原稿執筆',
+    desc: '学生に向けた講演スピーチの原稿を執筆しました。',
+    tags: ['スピーチライティング', '原稿執筆'],
+  },
+  {
+    client: 'スポーツクラブ（50周年）',
+    title: '記念冊子 挨拶文執筆',
+    desc: '創立50周年記念冊子の責任者挨拶文を執筆しました。',
+    tags: ['スピーチライティング', '原稿執筆'],
+  },
+];
 ---
 
 <BaseLayout title="Works" description="鈴木愛美の映像制作・スピーチライター作品一覧">
   <div class="page-header">
     <div class="page-header-inner">
       <p class="page-eyebrow">Works</p>
-      <h1>作品集</h1>
+      <h1>制作実績</h1>
     </div>
   </div>
 
   <div class="page-wrapper">
+
+    <p class="lead-text">取材・インタビュー・執筆・映像制作まで、さまざまな業界の企業案件に携わってきました。</p>
+
+    <!-- 実績 -->
+    <section class="achievements">
+
+      <!-- 映像・動画制作 -->
+      <div class="achievement-block">
+        <h2 class="achievement-heading">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="6" width="15" height="12" rx="2"/>
+            <path d="M17 10l5-3v10l-5-3"/>
+          </svg>
+          映像・動画制作
+        </h2>
+        <ul class="achievement-list">
+          {videoWorks.map(item => (
+            <li class="achievement-card">
+              <h3 class="card-title">
+                <span class="card-client">{item.client}</span>
+                <span class="card-sep">｜</span>
+                <span class="card-work">{item.title}</span>
+              </h3>
+              <p class="card-desc">{item.desc}</p>
+              <div class="card-tags">
+                {item.tags.map(tag => <span class="card-tag">{tag}</span>)}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- ライティング・コンテンツ制作 -->
+      <div class="achievement-block">
+        <h2 class="achievement-heading">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 20h9"/>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+          </svg>
+          ライティング・コンテンツ制作
+        </h2>
+        <ul class="achievement-list">
+          {writingWorks.map(item => (
+            <li class="achievement-card">
+              <h3 class="card-title">
+                <span class="card-client">{item.client}</span>
+                <span class="card-sep">｜</span>
+                <span class="card-work">{item.title}</span>
+              </h3>
+              <p class="card-desc">{item.desc}</p>
+              <div class="card-tags">
+                {item.tags.map(tag => <span class="card-tag">{tag}</span>)}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <p class="achievement-footnote">※ 掲載案件はチームの一員として制作に携わったものを含みます。</p>
+    </section>
+
+    <!-- 自主制作 -->
+    <div class="section-divider">
+      <span class="divider-label">自主制作</span>
+    </div>
+
     <div class="filter-tabs">
       <button class="filter-btn active" data-filter="all">すべて</button>
       <button class="filter-btn" data-filter="video">映像制作</button>
@@ -66,20 +204,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </div>
         <div class="work-info">
+          <span class="work-tag tag-training">スピーチトレーニング</span>
           <h3>90分スピーチトレーニング①</h3>
         </div>
       </a>
-      <div class="work-card" data-category="speech">
-        <div class="work-thumb placeholder-thumb">
-          <span>✍️</span>
-        </div>
-        <div class="work-info">
-          <span class="work-tag tag-speech">スピーチ・執筆</span>
-          <h3>スピーチタイトル</h3>
-          <p>スピーチ・執筆物の概要がここに入ります。</p>
-        </div>
-      </div>
     </div>
+
   </div>
 </BaseLayout>
 
@@ -130,6 +260,122 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     padding: 3rem 1.5rem;
   }
 
+  /* Lead */
+  .lead-text {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--text-mid);
+    border-left: 3px solid var(--gold);
+    padding-left: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  /* Achievements */
+  .achievements {
+    margin-bottom: 3.5rem;
+  }
+  .achievement-block {
+    margin-bottom: 3rem;
+  }
+  .achievement-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    letter-spacing: 0.06em;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .achievement-heading svg {
+    color: var(--text-mid);
+    flex-shrink: 0;
+  }
+
+  .achievement-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .achievement-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.4rem 1.6rem 1.3rem;
+    transition: box-shadow 0.2s;
+  }
+  .achievement-card:hover {
+    box-shadow: 0 4px 16px rgba(29, 53, 87, 0.08);
+  }
+  .card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.55rem;
+    line-height: 1.5;
+  }
+  .card-client {
+    /* inherits */
+  }
+  .card-sep {
+    color: var(--text-light);
+    margin: 0 0.2rem;
+  }
+  .card-work {
+    /* inherits */
+  }
+  .card-desc {
+    font-size: 0.875rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .card-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    color: var(--text-mid);
+    letter-spacing: 0.03em;
+  }
+  .achievement-footnote {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: -1rem;
+  }
+
+  /* Section divider */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .section-divider::before,
+  .section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .divider-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: var(--text-light);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* Filter */
   .filter-tabs {
     display: flex;
     gap: 0.6rem;
@@ -155,6 +401,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     border-color: var(--navy);
   }
 
+  /* Works grid */
   .works-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -171,17 +418,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: inherit;
   }
   .work-card:hover {
-    box-shadow: 0 6px 24px rgba(29,53,87,0.12);
+    box-shadow: 0 6px 24px rgba(29, 53, 87, 0.12);
     transform: translateY(-3px);
-  }
-  .placeholder-thumb {
-    height: 210px;
-    background: var(--bg-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    border-bottom: 1px solid var(--border);
   }
   .yt-thumb {
     height: 210px;
@@ -209,7 +447,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     pointer-events: none;
   }
   .yt-play svg {
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
     transition: transform 0.2s;
   }
   .work-card:hover .yt-play svg {
@@ -227,9 +465,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-bottom: 0.6rem;
     letter-spacing: 0.06em;
   }
-  .tag-video    { background: var(--navy);       color: var(--white); }
-  .tag-speech   { background: var(--blue-accent); color: var(--white); }
-  .tag-training { background: #5a7a5a;            color: var(--white); }
+  .tag-video    { background: var(--navy);        color: var(--white); }
+  .tag-speech   { background: var(--blue-accent);  color: var(--white); }
+  .tag-training { background: #5a7a5a;             color: var(--white); }
   .work-info h3 {
     font-size: 1.05rem;
     font-weight: 700;
