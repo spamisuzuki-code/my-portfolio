@@ -1,0 +1,51 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+  <defs>
+    <style>
+      .jp { font-family: 'Noto Sans JP','Yu Gothic','Meiryo',sans-serif; }
+      .serif { font-family: 'Cormorant Garamond','Times New Roman',serif; }
+      .smallcaps { letter-spacing: 3px; text-transform: uppercase; }
+      .label { font-size: 17px; fill: #4a5a6a; }
+      .micro { font-size: 13px; fill: #8a9aaa; letter-spacing: 1.2px; }
+      .body { font-size: 18px; fill: #1a2a3a; }
+      .shadow { filter: drop-shadow(0 14px 26px rgba(20,37,61,.16)); }
+    </style>
+    <linearGradient id="navyGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14253d"/>
+      <stop offset="1" stop-color="#1d3557"/>
+    </linearGradient>
+    <linearGradient id="paperGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f4f6f9"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1100" fill="#ffffff"/>
+  <text x="120" y="108" class="jp" font-size="34" font-weight="700" fill="#1d3557">B案：白ベース × 繊細な罫線</text>
+  <text x="120" y="145" class="jp" font-size="18" fill="#4a5a6a">余白を広く取り、講師・ライターとしての読みやすさを強調する案</text>
+
+  <g class="shadow">
+    <rect x="120" y="210" width="640" height="390" rx="14" fill="url(#paperGrad)" stroke="#d0d9e6"/>
+    <rect x="164" y="254" width="552" height="302" rx="0" fill="none" stroke="#d0d9e6"/>
+    <text x="480" y="325" text-anchor="middle" class="serif smallcaps" font-size="20" fill="#457b9d">Speech Writer &amp; Video Creator</text>
+    <line x1="380" y1="356" x2="580" y2="356" stroke="#c9a84c" stroke-width="2"/>
+    <text x="480" y="438" text-anchor="middle" class="jp" font-size="54" font-weight="700" fill="#1d3557" letter-spacing="5">鈴木 愛美</text>
+    <text x="480" y="481" text-anchor="middle" class="serif" font-size="30" fill="#8a9aaa">Ami Suzuki</text>
+    <text x="480" y="524" text-anchor="middle" class="jp" font-size="16" fill="#4a5a6a" letter-spacing="1.3">言葉を整え、映像で届ける。</text>
+  </g>
+
+  <g class="shadow">
+    <rect x="840" y="210" width="640" height="390" rx="14" fill="#ffffff" stroke="#d0d9e6"/>
+    <circle cx="912" cy="292" r="7" fill="#c9a84c"/>
+    <text x="940" y="300" class="jp" font-size="22" font-weight="700" fill="#1d3557">Contact</text>
+    <line x1="900" y1="338" x2="1404" y2="338" stroke="#d0d9e6"/>
+    <text x="900" y="392" class="micro serif smallcaps">Website</text>
+    <text x="1035" y="392" class="body jp">lovebeauty32.com</text>
+    <text x="900" y="436" class="micro serif smallcaps">Instagram</text>
+    <text x="1035" y="436" class="body jp">@ami.suzuki2228</text>
+    <text x="900" y="480" class="micro serif smallcaps">YouTube</text>
+    <text x="1035" y="480" class="body jp">@ami.speech</text>
+    <text x="900" y="524" class="micro serif smallcaps">X</text>
+    <text x="1035" y="524" class="body jp">@sp_ami_suzuki</text>
+    <rect x="1290" y="382" width="92" height="92" fill="#f4f6f9" stroke="#d0d9e6"/>
+    <path d="M1306 398h19v19h-19zM1350 398h19v19h-19zM1306 442h19v19h-19zM1334 428h12v12h-12zM1354 448h15v15h-15z" fill="#1d3557"/>
+  </g>
+</svg>

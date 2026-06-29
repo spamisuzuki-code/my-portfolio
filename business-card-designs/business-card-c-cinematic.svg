@@ -1,0 +1,60 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+  <defs>
+    <style>
+      .jp { font-family: 'Noto Sans JP','Yu Gothic','Meiryo',sans-serif; }
+      .serif { font-family: 'Cormorant Garamond','Times New Roman',serif; }
+      .smallcaps { letter-spacing: 3px; text-transform: uppercase; }
+      .label { font-size: 17px; fill: #4a5a6a; }
+      .micro { font-size: 13px; fill: #8a9aaa; letter-spacing: 1.2px; }
+      .body { font-size: 18px; fill: #1a2a3a; }
+      .shadow { filter: drop-shadow(0 14px 26px rgba(20,37,61,.16)); }
+    </style>
+    <linearGradient id="navyGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14253d"/>
+      <stop offset="1" stop-color="#1d3557"/>
+    </linearGradient>
+    <linearGradient id="paperGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f4f6f9"/>
+    </linearGradient>
+  </defs>
+  <defs>
+    <linearGradient id="cinema" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f1b2d"/>
+      <stop offset=".58" stop-color="#1d3557"/>
+      <stop offset="1" stop-color="#457b9d"/>
+    </linearGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="rgba(255,255,255,.18)"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1100" fill="#eef2f6"/>
+  <text x="120" y="108" class="jp" font-size="34" font-weight="700" fill="#1d3557">C案：映像クリエイター感のあるシネマ調</text>
+  <text x="120" y="145" class="jp" font-size="18" fill="#4a5a6a">スピーチだけでなく、映像制作の印象も強く残す案</text>
+
+  <g class="shadow">
+    <rect x="120" y="210" width="640" height="390" rx="14" fill="url(#cinema)"/>
+    <rect x="120" y="210" width="640" height="390" rx="14" fill="url(#dots)" opacity=".55"/>
+    <path d="M120 470 C260 395 410 620 760 430 L760 600 L120 600 Z" fill="rgba(201,168,76,.18)"/>
+    <rect x="174" y="272" width="74" height="42" rx="3" fill="none" stroke="#c9a84c" stroke-width="3"/>
+    <circle cx="262" cy="293" r="21" fill="none" stroke="#c9a84c" stroke-width="3"/>
+    <text x="178" y="370" class="serif smallcaps" font-size="19" fill="rgba(255,255,255,.8)">Speech / Movie / Story</text>
+    <text x="178" y="456" class="jp" font-size="52" font-weight="700" fill="#ffffff" letter-spacing="5">鈴木 愛美</text>
+    <text x="181" y="502" class="serif" font-size="31" fill="rgba(255,255,255,.72)">Ami Suzuki</text>
+    <line x1="178" y1="535" x2="444" y2="535" stroke="#c9a84c" stroke-width="2"/>
+  </g>
+
+  <g class="shadow">
+    <rect x="840" y="210" width="640" height="390" rx="14" fill="#14253d"/>
+    <rect x="878" y="248" width="564" height="314" rx="6" fill="#ffffff"/>
+    <text x="918" y="318" class="jp" font-size="27" font-weight="700" fill="#1d3557" letter-spacing="2">鈴木 愛美</text>
+    <text x="920" y="351" class="serif" font-size="21" fill="#8a9aaa">Ami Suzuki</text>
+    <text x="918" y="401" class="jp" font-size="17" fill="#457b9d" letter-spacing="1.2">Speech Writer / Video Creator</text>
+    <text x="918" y="456" class="body jp">lovebeauty32.com</text>
+    <text x="918" y="492" class="body jp">@ami.suzuki2228</text>
+    <text x="918" y="528" class="body jp">@ami.speech</text>
+    <rect x="1284" y="388" width="106" height="106" fill="#f4f6f9" stroke="#d0d9e6"/>
+    <path d="M1302 406h22v22h-22zM1350 406h22v22h-22zM1302 454h22v22h-22zM1334 438h14v14h-14zM1356 462h16v16h-16zM1328 480h12v12h-12z" fill="#14253d"/>
+    <rect x="878" y="548" width="564" height="14" fill="#c9a84c"/>
+  </g>
+</svg>

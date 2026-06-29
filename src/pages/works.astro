@@ -8,6 +8,36 @@ const videoWorks = [
     desc: 'サービス利用者へのインタビュー取材と動画編集を担当しました。',
     tags: ['取材・インタビュー', '動画編集'],
   },
+  {
+    client: '大手教育グループ会社',
+    title: '社内報動画の編集',
+    desc: '企業理念の浸透と社内文化の醸成を目的とした社内報動画の編集を担当しました。',
+    tags: ['動画編集'],
+  },
+  {
+    client: '金融関連会社',
+    title: '社内報動画の編集',
+    desc: '企業理念の浸透と社内文化の醸成を目的とした社内報動画の編集を担当しました。',
+    tags: ['動画編集'],
+  },
+  {
+    client: '大手ITソリューション企業',
+    title: '式典用プレゼンテーション背景・トランジションの作成',
+    desc: '5000人規模の式典における、プレゼンテーションの背景アニメーション・トランジションの作成を担当しました。',
+    tags: ['モーショングラフィックス', '映像制作'],
+  },
+  {
+    client: '大手教育グループ会社',
+    title: '総会プレゼンテーション用 事業紹介動画の編集',
+    desc: '数百名規模の総会における、プレゼンテーション用の事業紹介動画の編集を担当しました。',
+    tags: ['動画編集', '映像制作'],
+  },
+  {
+    client: '不動産関連サポート会社',
+    title: 'デジタルサイネージ動画の作成',
+    desc: '本社ビル前に設置されている、デジタルサイネージ用広告動画の作成を担当しました。',
+    tags: ['映像制作', 'デジタルサイネージ'],
+  },
 ];
 
 const writingWorks = [
@@ -29,6 +59,25 @@ const writingWorks = [
     desc: '創立50周年記念冊子の責任者挨拶文を執筆しました。',
     tags: ['スピーチライティング', '原稿執筆'],
   },
+  {
+    client: 'ヒモンスピーチ',
+    title: '講師挨拶スピーチ原稿',
+    desc: 'あがり症の方向けスピーチ練習会「ヒモンスピーチ」での2分間挨拶スピーチ原稿。参加者が前向きに取り組めるよう意図して執筆しました。',
+    tags: ['スピーチライティング', '原稿執筆'],
+    link: 'https://note.com/ami_su/n/n419ac3eff26f',
+  },
+  {
+    client: '不動産関連サポート会社',
+    title: '採用向け社員インタビュー（記事・漫画・漫画の動画化）',
+    desc: '採用強化を目的とした、社員インタビュー記事の作成を担当しました。記事制作に加え、漫画化・動画化まで一貫して携わりました。',
+    tags: ['取材・インタビュー', '記事執筆', '漫画制作', '動画化'],
+  },
+  {
+    client: '不動産関連サポート会社',
+    title: '社史執筆',
+    desc: '創業者や社員へのインタビューを行い、社史を執筆しました。',
+    tags: ['取材・インタビュー', '執筆'],
+  },
 ];
 ---
 
@@ -47,8 +96,15 @@ const writingWorks = [
     <!-- 実績 -->
     <section class="achievements">
 
+      <div class="filter-tabs achiev-filter-tabs">
+        <button class="filter-btn achiev-btn active" data-achiev="all">すべて</button>
+        <button class="filter-btn achiev-btn" data-achiev="video">映像・動画制作</button>
+        <button class="filter-btn achiev-btn" data-achiev="writing">ライティング・コンテンツ制作</button>
+        <button class="filter-btn achiev-btn" data-achiev="training">スピーチトレーニング</button>
+      </div>
+
       <!-- 映像・動画制作 -->
-      <div class="achievement-block">
+      <div class="achievement-block" data-achiev="video">
         <h2 class="achievement-heading">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2" y="6" width="15" height="12" rx="2"/>
@@ -74,7 +130,7 @@ const writingWorks = [
       </div>
 
       <!-- ライティング・コンテンツ制作 -->
-      <div class="achievement-block">
+      <div class="achievement-block" data-achiev="writing">
         <h2 class="achievement-heading">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 20h9"/>
@@ -94,8 +150,40 @@ const writingWorks = [
               <div class="card-tags">
                 {item.tags.map(tag => <span class="card-tag">{tag}</span>)}
               </div>
+              {item.link && (
+                <a class="card-link" href={item.link} target="_blank" rel="noopener noreferrer">
+                  noteで読む →
+                </a>
+              )}
             </li>
           ))}
+        </ul>
+      </div>
+
+      <!-- スピーチトレーニング -->
+      <div class="achievement-block" data-achiev="training">
+        <h2 class="achievement-heading">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="23"/>
+            <line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+          スピーチトレーニング
+        </h2>
+        <ul class="achievement-list">
+          <li class="achievement-card">
+            <h3 class="card-title">
+              <span class="card-work">90分スピーチトレーニング①</span>
+            </h3>
+            <p class="card-desc">90分の個人トレーニングの様子です。</p>
+            <div class="card-tags">
+              <span class="card-tag">スピーチトレーニング</span>
+            </div>
+            <a class="card-link" href="https://youtube.com/shorts/s3hvy0O220U" target="_blank" rel="noopener noreferrer">
+              YouTubeで見る →
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -111,7 +199,6 @@ const writingWorks = [
       <button class="filter-btn active" data-filter="all">すべて</button>
       <button class="filter-btn" data-filter="video">映像制作</button>
       <button class="filter-btn" data-filter="speech">スピーチ・執筆</button>
-      <button class="filter-btn" data-filter="training">スピーチトレーニング</button>
     </div>
 
     <div class="works-grid">
@@ -154,16 +241,14 @@ const writingWorks = [
           <p>AI gekijjo 2025（2025年8月10日開催）に提出したチーム制作映像。演出を担当。</p>
         </div>
       </a>
-      <a class="work-card" data-category="training" href="https://youtube.com/shorts/s3hvy0O220U" target="_blank" rel="noopener noreferrer">
-        <div class="work-thumb yt-thumb">
-          <img src="https://img.youtube.com/vi/s3hvy0O220U/maxresdefault.jpg" alt="90分スピーチトレーニング①" />
-          <div class="yt-play">
-            <svg viewBox="0 0 68 48" width="60" height="42"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#ff0000"/><path d="M45 24 27 14v20" fill="#fff"/></svg>
-          </div>
+      <a class="work-card" data-category="speech" href="https://note.com/ami_su/n/n21c264b4b964" target="_blank" rel="noopener noreferrer">
+        <div class="work-thumb note-thumb">
+          <span class="note-badge">note</span>
+          <p class="note-title-preview">スピーチライターゼミ<br />ライティング部テーマ『直島』</p>
         </div>
         <div class="work-info">
-          <span class="work-tag tag-training">スピーチトレーニング</span>
-          <h3>90分スピーチトレーニング①</h3>
+          <span class="work-tag tag-speech">スピーチ・執筆</span>
+          <h3>スピーチライターゼミ<br />ライティング部テーマ『直島』</h3>
         </div>
       </a>
     </div>
@@ -172,17 +257,34 @@ const writingWorks = [
 </BaseLayout>
 
 <script>
-  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-  const cards = document.querySelectorAll<HTMLElement>('.work-card');
+  // 自主制作フィルター
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn:not(.achiev-btn)');
+  const workCards = document.querySelectorAll<HTMLElement>('.work-card');
 
-  buttons.forEach(btn => {
+  filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
+      filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const filter = btn.dataset.filter;
-      cards.forEach(card => {
+      workCards.forEach(card => {
         card.style.display =
           filter === 'all' || card.dataset.category === filter ? '' : 'none';
+      });
+    });
+  });
+
+  // 実績フィルター
+  const achievBtns = document.querySelectorAll<HTMLButtonElement>('.achiev-btn');
+  const achievBlocks = document.querySelectorAll<HTMLElement>('.achievement-block');
+
+  achievBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      achievBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.achiev;
+      achievBlocks.forEach(block => {
+        block.style.display =
+          filter === 'all' || block.dataset.achiev === filter ? '' : 'none';
       });
     });
   });
@@ -232,6 +334,9 @@ const writingWorks = [
   .achievements {
     margin-bottom: 3.5rem;
   }
+  .achiev-filter-tabs {
+    margin-bottom: 2rem;
+  }
   .achievement-block {
     margin-bottom: 3rem;
   }
@@ -266,7 +371,6 @@ const writingWorks = [
     transition: box-shadow 0.2s;
   }
   .achievement-card:hover {
-    box-shadow: 0 4px 16px rgba(29, 53, 87, 0.08);
   }
   .card-title {
     font-size: 1rem;
@@ -303,6 +407,19 @@ const writingWorks = [
     border-radius: 2rem;
     color: var(--text-mid);
     letter-spacing: 0.03em;
+  }
+  .card-link {
+    display: inline-block;
+    margin-top: 0.85rem;
+    font-size: 0.8rem;
+    color: var(--blue-accent);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .card-link:hover {
+    border-bottom-color: var(--blue-accent);
   }
   .achievement-footnote {
     font-size: 0.8rem;
@@ -426,6 +543,34 @@ const writingWorks = [
   .tag-video    { background: var(--navy);        color: var(--white); }
   .tag-speech   { background: var(--blue-accent);  color: var(--white); }
   .tag-training { background: #5a7a5a;             color: var(--white); }
+
+  /* Note card thumbnail */
+  .note-thumb {
+    height: 210px;
+    background: #f7f5f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 2rem;
+    position: relative;
+  }
+  .note-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1.2rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #41c9b4;
+    letter-spacing: 0.12em;
+  }
+  .note-title-preview {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-align: center;
+    line-height: 1.7;
+  }
   .work-info h3 {
     font-size: 1.05rem;
     font-weight: 700;

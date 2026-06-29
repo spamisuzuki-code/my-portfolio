@@ -1,0 +1,101 @@
+const fs = require("fs");
+const path = require("path");
+const sharp = require("sharp");
+
+const outDir = __dirname;
+const svgPath = path.join(outDir, "speechwriter-origin-note-thumbnail.svg");
+const pngPath = path.join(outDir, "speechwriter-origin-note-thumbnail.png");
+
+const svg = String.raw`<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="670" viewBox="0 0 1280 670">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="0.46" stop-color="#eef8f4"/>
+      <stop offset="1" stop-color="#fff6ed"/>
+    </linearGradient>
+    <linearGradient id="bridge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#164b5f"/>
+      <stop offset="1" stop-color="#b76e36"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#18323c" flood-opacity="0.14"/>
+    </filter>
+    <style>
+      .serif { font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Noto Serif CJK JP", serif; }
+      .sans { font-family: "Yu Gothic", "YuGothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="670" fill="url(#bg)"/>
+
+  <g opacity="0.1" fill="none" stroke="#164b5f" stroke-width="2">
+    <path d="M46 198 C216 96 372 128 520 230 S830 354 1014 240 S1185 170 1244 205"/>
+    <path d="M34 494 C224 386 392 418 526 514 S818 616 1048 486 S1213 412 1264 438"/>
+  </g>
+
+  <circle cx="112" cy="106" r="5" fill="#77b7c7" opacity="0.7"/>
+  <circle cx="207" cy="548" r="7" fill="#d58b76" opacity="0.48"/>
+  <circle cx="1127" cy="111" r="8" fill="#d7a45f" opacity="0.46"/>
+  <circle cx="1170" cy="527" r="5" fill="#86b5ca" opacity="0.58"/>
+
+  <g transform="translate(76 114)" filter="url(#shadow)">
+    <rect width="302" height="420" rx="18" fill="#ffffff" opacity="0.88"/>
+    <g transform="translate(48 63)" fill="none" stroke="#164b5f" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M123 35 L184 96" stroke-width="12"/>
+      <path d="M95 58 L157 120" stroke-width="12"/>
+      <path d="M144 110 L88 166" stroke-width="12"/>
+      <path d="M70 178 H180" stroke-width="12"/>
+      <path d="M125 178 V238" stroke-width="12"/>
+      <path d="M70 238 H206" stroke-width="12"/>
+      <path d="M52 278 H224" stroke-width="12"/>
+      <path d="M24 150 C54 132 80 136 108 155" stroke="#77b7c7" stroke-width="5" opacity="0.78"/>
+      <path d="M158 226 C188 208 214 212 242 231" stroke="#d7a45f" stroke-width="5" opacity="0.78"/>
+    </g>
+    <circle cx="87" cy="86" r="17" fill="#d96262" opacity="0.86"/>
+    <circle cx="219" cy="291" r="14" fill="#d96262" opacity="0.8"/>
+    <circle cx="241" cy="105" r="11" fill="#77b7c7" opacity="0.8"/>
+    <circle cx="80" cy="334" r="10" fill="#77b7c7" opacity="0.72"/>
+    <text x="151" y="374" class="sans" font-size="20" fill="#5d7681" text-anchor="middle" letter-spacing="2">臨床検査技師</text>
+  </g>
+
+  <g transform="translate(902 114)" filter="url(#shadow)">
+    <rect width="302" height="420" rx="18" fill="#ffffff" opacity="0.9"/>
+    <g transform="translate(54 62)">
+      <path d="M41 34 H188 C201 34 212 45 212 58 V250 C212 263 201 274 188 274 H41 C28 274 17 263 17 250 V58 C17 45 28 34 41 34 Z" fill="#fffaf4" stroke="#d9b88f" stroke-width="4"/>
+      <path d="M51 86 H178 M51 123 H181 M51 160 H159 M51 198 H186" stroke="#9ab3bb" stroke-width="5" stroke-linecap="round" opacity="0.78"/>
+      <path d="M141 247 L210 178 L233 201 L164 270 L127 284 Z" fill="#164b5f"/>
+      <path d="M205 183 L228 206" stroke="#d7a45f" stroke-width="7" stroke-linecap="round"/>
+      <path d="M127 284 L142 248 L163 270 Z" fill="#b76e36"/>
+    </g>
+    <text x="151" y="374" class="sans" font-size="20" fill="#6e6a61" text-anchor="middle" letter-spacing="2">スピーチライター</text>
+  </g>
+
+  <g>
+    <path d="M431 400 C526 292 641 288 755 400 C782 426 811 436 844 426" fill="none" stroke="url(#bridge)" stroke-width="8" stroke-linecap="round" opacity="0.76"/>
+    <circle cx="431" cy="400" r="9" fill="#164b5f"/>
+    <circle cx="844" cy="426" r="9" fill="#b76e36"/>
+  </g>
+
+  <g>
+    <text x="640" y="188" class="sans" font-size="24" fill="#55717c" text-anchor="middle" letter-spacing="3">スピーチライターを目指した経緯</text>
+    <text x="640" y="270" class="serif" font-size="54" fill="#173947" text-anchor="middle" font-weight="700">理屈で検査技師に。</text>
+    <text x="640" y="342" class="serif" font-size="60" fill="#173947" text-anchor="middle" font-weight="700">感動で、</text>
+    <text x="640" y="416" class="serif" font-size="60" fill="#b76e36" text-anchor="middle" font-weight="700">スピーチライターに。</text>
+    <rect x="503" y="462" width="274" height="2" fill="url(#bridge)" opacity="0.72"/>
+    <text x="640" y="508" class="sans" font-size="24" fill="#596a70" text-anchor="middle" letter-spacing="3">鈴木愛美</text>
+  </g>
+</svg>`;
+
+fs.writeFileSync(svgPath, svg, "utf8");
+
+sharp(Buffer.from(svg))
+  .png()
+  .toFile(pngPath)
+  .then(() => {
+    console.log(`SVG: ${svgPath}`);
+    console.log(`PNG: ${pngPath}`);
+  })
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
